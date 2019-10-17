@@ -138,7 +138,7 @@ function movieThis() {
 
     //REQUEST WITH AXIOS TO THE OMDB API
     axios.get("http://www.omdbapi.com/?t=" + userQuery + "&apikey=trilogy").then(
-    function (error, response, ) {
+    function (error, response ) {
         let ratingsArr = userMovie.Ratings;
         if (ratingsArr + length > 2) {
         }

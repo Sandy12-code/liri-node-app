@@ -68,18 +68,7 @@ function concertThis() {
             };
 
 
-            // else {
-            //     console.log('Band or concert not found!');
-            // };
-
         })
-
-
-
-    // if (!error && response.statuscode === 200) {
-    //Capture data and use JSON to format
-    // let response = JSON.parse(body);
-    //Parse data and use for loop to access paths to data
 
 };
 
@@ -117,10 +106,7 @@ function movieThis() {
 
             let ratingsArr = data.Ratings;
             console.log(ratingsArr);
-            // if (ratingsArr + length > 2) {
-            // }
-
-
+            
             console.log(`\n Hurray! That's for you...\n\n Title: ${data.Title}\n Cast: ${data.Actors}\n Released: ${data.Year}\nIMDb Rating: ${data.imdbRating}\nRotten Tomatoes Rating: ${data.Ratings[1].Value}\nCountry:
             ${data.Country}\n Language: ${data.Language}\n Plot: ${data.Plot} \n\n- - - - -`)
 

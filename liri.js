@@ -55,32 +55,33 @@ function concertThis() {
     console.log(`\n - - - - -\n\n searching for...${userQuery}'s next show...`);
 
     //USE REQUEST AS OUR QUERY URL USING OUR USER QUERY VARIABLE AS THE PARAMETERS OF OUR SEARCH
-    request("https://rest.bandsintown.com/artists/" + userQuery + "/events?app_id=codingbootcamp");
+    axios.get("https://rest.bandsintown.com/artists/" + userQuery + "/events?app_id=codingbootcamp")
+        .then(function (response) {
+            console.log('response.data', response.data);
 
-
-    if (!error && response.statuscode === 200) {
-        //Capture data and use JSON to format
-        let userBand = JSON.parse(body);
-        //Parse data and use for loop to access paths to data
-        if (userBand.lenght > 0) {
-            for (i = 0; i < 1; i++) {
-                console.log(`\nHurray! That's for you...\n\n Artist: ${userBand[1].lineup[0]} \nVenue: ${userBand[1].venue.name} \nVenue Location: ${userBand[1].venue.latitude}.${userBand[1].venue.longitude} \nVenue City: ${userBand[1].venue.city}.${userBand[1].venue.country}`)
+            for (var i = 0; i < response.data.length; i++) {
+                console.log(`\nHurray! That's for you...\n\n Artist: ${response.data[i].lineup[0]} \nVenue: ${response.data[i].venue.name} \nVenue Location: ${response.data[i].venue.latitude}.${response.data[i].venue.longitude} \nVenue City: ${response.data[i].venue.city}.${response.data[i].venue.country}`)
 
                 // moment.js to format the date to MM/DD/YYYY
-                let concertDate = moment(userBand[1].datetime).format("MM/DD/YYYY hh:00 A");
+                let concertDate = moment(response.data[i].datetime).format("MM/DD/YYYY hh:00 A");
                 console.log(`Date and Time: ${concertDate}\n\n - - -`);
             };
 
-        }
-        else {
-            console.log('Band or concert not found!');
-        };
-    };
+
+            // else {
+            //     console.log('Band or concert not found!');
+            // };
+
+        })
 
 
 
-}
+    // if (!error && response.statuscode === 200) {
+    //Capture data and use JSON to format
+    // let response = JSON.parse(body);
+    //Parse data and use for loop to access paths to data
 
+};
 
 function spotifyThisSong() {
     console.log(`\n - - - - -\n\nSearching For..."${userQuery}"`);
